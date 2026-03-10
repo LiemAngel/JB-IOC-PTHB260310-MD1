@@ -1,5 +1,0 @@
-Mô tả ràng buộc "một phòng không thể đặt trùng thời gian" (dạng mô tả logic, chưa cần SQL) 
-======================================================================================
-Sử dụng cơ chế Reservation Timeout nhằm giới hạn thời gian limit booking và đảm bảo không đặt trùng phòng.
-Thay vì đưa y/c vào "confirmed" khi có lệnh booking, thì đưa vào pending chờ thanh toán đồng thời hệ thống đánh dấu là "locked" ( Đang được đặt) đồng thời hệ thống sẽ khởi động bộ đếm ( countdown có thể là 15p hoặc 30p - LockedUntil = NOW + 15MIN ). Nếu lệnh thanh toán thành công thì chuyển trạng thái confirmed, nếu hết time thì 1 tiến trình tự động sẽ scan và chuyển phòng về trạng thái available nhằm đảm bảo không có nhiều khách đặt cùng 1 phòng trong cùng 1 lúc và khi phòng được đặt xong sẽ bị khóa .
-
